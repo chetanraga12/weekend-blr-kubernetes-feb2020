@@ -1,0 +1,182 @@
+What is KUERNETES?
+===============
+    Container orch
+    Google
+    Dev in Go
+    Free and Open Source
+
+Why Kubernetes?
+----
+
+
+How kubernetes works!!!  Kubernetes Architecture...
+====================================================
+HUMAN ---> MASTER(S) --> NODES aka WORKER
+          ======== k8 cluster===========
+
+Humen -
+        kubectl
+
+
+MASTER
+        API SERVER - Collection of API resources for k8s. and Its front end of k8s cluter.
+        ETCD - Cluster Store
+        Controller Manager - Manage a controller - Each controller control somthing - in loop
+        Schular - Which schedle a work.
+WORKER
+        Kubelet  - Runnging agent in Deamon mode - Instantiate a POD.
+        Docker - Container Interface
+        Kube proxy - Networking service
+
+Humen
+        YAML|JSON
+                API RESOURCESs
+                
+                POD 
+                        IP
+                                    Container --> Image -> Regitry 
+                ----------------------------------
+                Kubelet             docker 
+                        KubeProxy                           
+                    Instan by Kubelet - Has IP address - May have multiple pod.
+                    ACTION - CRUD
+
+                Replication Controller      CRUD
+                =======================
+                Replication  - Replicate POD to X
+                Controller - control a desire and actual.
+
+
+                Deployment              CRUD
+                ===============
+                Replication
+                Controller
+                Rollback
+                Rollout updates
+                Versining
+
+=================================================
+MASTER
+        API SERVER - POD -> Container -> Image -> Registry
+        ETCD - C- POD -> Container -> Image -> Registry
+        Controller Manager - POD -> Container -> Image -> Registry
+        Schular - POD -> Container -> Image -> Registry
+
+        Kubelet
+        Docker
+        KUbeproxy - POD -> Container -> Image -> Registry
+
+WORKER
+        Kubelet  - Runnging agent in Deamon mode - Instantiate a POD.
+        Docker - Container Interface
+        Kube proxy - POD -> Container -> Image -> Registry
+
+================================================
+How to setup ALL THESE?
+https://github.com/kelseyhightower/kubernetes-the-hard-way
+
+DEV - minikube
+
+Setting k8s in physcal/virtual manully - Kubeadm
+
+Setting up a clustor in Cloud - KOPS
+
+PAAS with k8s - EKS - AKS - GKE
+
+==============================
+Setting k8s in physcal/virtual manully - Kubeadm
+13.233.138.99
+
+https://www.devopsschool.com/tutorial/docker/install-config/
+https://www.devopsschool.com/blog/setting-up-kubernetes-clusters-using-kubeadm-manual-way-in-rhel-7-centos7/
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 172.31.27.224:6443 --token swmwxe.e5tmuct9cx84dt7o \
+    --discovery-token-ca-cert-hash sha256:02df9447f36018b55dd5488e5f3e63b05e87da8d7c41061b81eb8b5c0c17918d
+
+=============================================
+Humen -
+        kubectl
+                    config
+                            api server - access - token of
+                    ~./kube
+                    curr_location
+=======================================================
+kubectl 
+        CRUD
+        CREATE      READ    UPDATE      DELETE
+        --------------------------------------
+        create      get     edit        DELETE      Api-resource-name
+                            apply
+
+What are the Api-resource-name???????  
+
+
+What is namespace?
+
+
+How to add workr?
+13.235.79.204
+
+
+KIND - POD
+Version - 
+Group --
+
+pod.yaml
+-------------
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-pod
+  labels: 
+    app: webserver
+spec:
+  containers:
+  - name: hello-ctr
+    image: nginx
+    ports:
+    - containerPort: 80
+
+
+rc.yaml
+===========================
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: hello-rc
+spec:
+  replicas: 2   
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: hello-ctr
+        image: nginx
+        ports:
+        - containerPort: 80
+
+How to work with pod?
+    - How to access a pod from browers?
+    - How to go inside POD --- containr.
+
+WORKSTATIOn - 13.233.138.99
+User - ec2-user
+KEY https://www.devopsschool.com/notes/docker/2019/
+file - rajesh-mumbai.ppk
+
+START LINE - 524 
+END LINE - 766
