@@ -176,7 +176,9 @@ How to work with pod?
 WORKSTATIOn - 13.233.138.99
 User - ec2-user
 KEY https://www.devopsschool.com/notes/docker/2019/
-file - rajesh-mumbai.ppk
+file - 
 
+
+LAB Guide - https://github.com/devopsschool-lab-exercise/Kubernetes-Tecnotree-Nov-2019/blob/master/SUPERNOTES.TXT
 START LINE - 524 
 END LINE - 766
