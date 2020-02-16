@@ -182,3 +182,35 @@ file -
 LAB Guide - https://github.com/devopsschool-lab-exercise/Kubernetes-Tecnotree-Nov-2019/blob/master/SUPERNOTES.TXT
 START LINE - 524 
 END LINE - 766
+
+
+                Deployment              CRUD
+                ===============
+                Replication
+                Controller
+                Rollback
+                Rollout updates
+                Versining
+
+
+kubectl create deployment raj --image=scmgalaxy/nginx-devopsschoolv1
+
+Image
+scmgalaxy/nginx-devopsschoolv1
+scmgalaxy/nginx-devopsschoolv2
+
+kubectl scale --replicas=4 deployment/raj
+
+kubectl rollout undo deployment/raj
+
+
+
+LAB - - DEPLOYEMENT - 767 - 991
+=======================================
+kubectl expose deploy raj --port=80 --target-port=80 --name=raj
+kubectl expose deploy raj --port=80 --target-port=80 --type=NodePort --name=raj1
+kubectl expose deploy raj --port=80 --target-port=80 --type=LoadBalancer --name=raj2
+
+clustorip
+nodeport
+loadbalancer
